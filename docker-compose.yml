@@ -6,6 +6,9 @@ services:
       context: ./api-1
     ports:
       - "5000:5000"
+    networks:
+      - custom-network
+
   api-2:
     build:
       context: ./api-2
@@ -13,3 +16,9 @@ services:
       - "5001:5001"
     depends_on:
       - api-1
+    networks:
+      - custom-network
+
+networks:
+  custom-network:
+    driver: bridge
